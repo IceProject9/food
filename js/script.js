@@ -33,21 +33,7 @@ window.addEventListener('DOMContentLoaded', () => {
                     showTabContent(i);
                 }
             });
-
         }
 
-
-
-
     });
-
-
-
-
-
-
-
-
-
-
 });

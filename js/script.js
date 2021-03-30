@@ -1,5 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
-    //ТАБЫ
+    //ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ 
     const tabs = document.querySelectorAll('.tabheader__item'),
           tabsContent = document.querySelectorAll('.tabcontent'),
           tabsParent = document.querySelector('.tabheader__items');
@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    //ТАЙМЕР
+    //ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР 
     const deadline = '2021-04-28';
 
     function getTimeRemaining(endtime) {
@@ -91,4 +91,56 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     setClock('.timer', deadline);
+
+    //МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО 
+
+    const modalTrigger = document.querySelectorAll('.callme'),
+            modalCloseBtn = document.querySelector('.modal__close'),
+            modal = document.querySelector('.modal');
+
+    modalTrigger.forEach(btn => {
+        btn.addEventListener('click', () => {
+            modal.classList.add('show'); 
+            modal.classList.remove('hide');
+            // modal.classList.toggle('show'); // Есть вариант с тогглом.
+            document.body.style.overflow = 'hidden'; // На сайте текст не скролится когда открыто окно.
+        });        
+    
+    });
+
+    function modalClose() {
+        modal.classList.add('hide');
+        modal.classList.remove('show');
+
+        // modal.classList.toggle('show');
+        document.body.style.overflow = ''; // Да да да тут пустые кавычки.
+    }
+
+    modalCloseBtn.addEventListener('click', modalClose);
+        
+        // modal.classList.add('hide');
+        // modal.classList.remove('show');
+        // // modal.classList.toggle('show');
+        // document.body.style.overflow = ''; // Да да да тут пустые кавычки.
+
+
+
+    modal.addEventListener('click', (e) => {
+        if(e.target === modal) {
+            modalClose();
+            // modal.classList.add('hide');
+            // modal.classList.remove('show');
+            // // modal.classList.toggle('show');
+            // document.body.style.overflow = ''; // Да да да тут пустые кавычки.
+        }
+
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code == 'Escape' && modal.classList.contains('show')) {
+            modalClose();
+        }
+    }); 
+    
+
 });

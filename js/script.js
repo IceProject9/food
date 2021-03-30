@@ -1,5 +1,9 @@
 window.addEventListener('DOMContentLoaded', () => {
+<<<<<<< HEAD
     //ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ ТАБЫ 
+=======
+    //ТАБЫ
+>>>>>>> main
     const tabs = document.querySelectorAll('.tabheader__item'),
           tabsContent = document.querySelectorAll('.tabcontent'),
           tabsParent = document.querySelector('.tabheader__items');
@@ -38,7 +42,11 @@ window.addEventListener('DOMContentLoaded', () => {
 
     });
 
+<<<<<<< HEAD
     //ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР ТАЙМЕР 
+=======
+    //ТАЙМЕР
+>>>>>>> main
     const deadline = '2021-04-28';
 
     function getTimeRemaining(endtime) {
@@ -91,6 +99,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     setClock('.timer', deadline);
+<<<<<<< HEAD
 
     //МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО МОДАЛЬНОЕ ОКНО 
 
@@ -143,4 +152,6 @@ window.addEventListener('DOMContentLoaded', () => {
     }); 
     
 
+=======
+>>>>>>> main
 });

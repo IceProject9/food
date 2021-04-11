@@ -385,11 +385,17 @@ window.addEventListener('DOMContentLoaded', () => {
         indicators.push(dot); // запушим в массив все пункты li (все 4 точки)
     }
 
+    const reg = /\d/g; // мы прокачали свои скилы и узнали про регулярки, я применю эти знания тут чтобы не слайсить ширину
+
+    function sliceWidth () { // было задание записать функцию для ренулярных выражений
+        return +width.match(reg).join(''); // здесь я забыл про ретурн, функция должна возвращать строку, + в начале для того чтобы это было числом, джойн для того чтобы из массива собрать число а регулярное выражение отделит числа от букв (px)
+    }
+
     next.addEventListener('click', () => { //КНОПКА ВЕРЁД мы на неё кликаем и что то происходит
-        if (offset == +width.slice(0, width.length - 2) * (slides.length - 1)) { //короче тут сложное вычисление нашего текущего положения на слайдере: плюс делает наш объект числом, слайс вырезает из строки символы - нуль это начало, width.length это ширина в пикселях и мы две буквы px вырезаем при помощи -2
+        if (offset == sliceWidth() * (slides.length - 1)) { //короче тут сложное вычисление нашего текущего положения на слайдере: плюс делает наш объект числом, слайс вырезает из строки символы - нуль это начало, width.length это ширина в пикселях и мы две буквы px вырезаем при помощи -2
             offset = 0; // короче, если мы находились в конце слайдо шоу то мы вернёмся в начало 
         } else {
-            offset += +width.slice(0, width.length - 2); // если мы не в конце мы пролистнём слайд вперёд
+            offset += sliceWidth(); // если мы не в конце мы пролистнём слайд вперёд
         }
         slidesField.style.transform = `translateX(-${offset}px)`; // тут всему филду присваивается класс стиля трансформ 
 
@@ -404,9 +410,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     prev.addEventListener('click', () => {  //КНОПКА НАЗАД
         if (offset == 0) {                  //ЕСЛИ МЫ НАХОДИМСЯ В НАЧАЛЕ СЛАЙДШОУ
-            offset = +width.slice(0, width.length - 2) * (slides.length - 1) //ТО ПРИ НАЖАТИИ КНОПКИ НАЗАД МЫ ПЕРЕМЕСТИМСЯ НП ПОСЛЕДНИЙ СЛАЙД 
+            offset = sliceWidth() * (slides.length - 1) //ТО ПРИ НАЖАТИИ КНОПКИ НАЗАД МЫ ПЕРЕМЕСТИМСЯ НП ПОСЛЕДНИЙ СЛАЙД 
         } else { // ИНАЧЕ
-            offset -= +width.slice(0, width.length - 2); // МЫ ПРОСТО ПЕРЕМЕСТИМСЯ НА ПРЕДЫДУЩИЙ СЛАЙД
+            offset -= sliceWidth(); // МЫ ПРОСТО ПЕРЕМЕСТИМСЯ НА ПРЕДЫДУЩИЙ СЛАЙД
         }
         slidesField.style.transform = `translateX(-${offset}px)`; // присваиваем всем слайдам css стиль трансформ и прописываем на сколько px он будет перемещаться при каждом нажатии кнопки
 
@@ -419,61 +425,20 @@ window.addEventListener('DOMContentLoaded', () => {
         dotsOpacity(); // просто функция, которая задаёт опасити точкам и точке на которой мы сейчас находимся, описывал её выше
     })
 
-        indicators.forEach(dot => { // каждой точке в массиве
-            dot.addEventListener('click', (e) => { //вешаем событие клик мышью
-                const slideTo = e.target.getAttribute('data-slide-to') // тут мы получаем id от той точки на которую кликнули
-                slideIndex = slideTo; // присваиваем числу которое будет показывать на каком мы слайде id точки на которую кликнули
-                offset = +width.slice(0, width.length - 2) * (slideTo - 1) // выставляем положение слайдера в то место куда надо 
-                slidesField.style.transform = `translateX(-${offset}px)`; // плавно пересещаем слайдер при помощи стиля трансформ
+    indicators.forEach(dot => { // каждой точке в массиве
+        dot.addEventListener('click', (e) => { //вешаем событие клик мышью
+            const slideTo = e.target.getAttribute('data-slide-to') // тут мы получаем id от той точки на которую кликнули
+            slideIndex = slideTo; // присваиваем числу которое будет показывать на каком мы слайде id точки на которую кликнули
+            offset = sliceWidth() * (slideTo - 1) // выставляем положение слайдера в то место куда надо 
+            slidesField.style.transform = `translateX(-${offset}px)`; // плавно пересещаем слайдер при помощи стиля трансформ
 
-                currentZero(); // использовал функцию которая пришивает ноль перед числом
-                dotsOpacity(); // опять та же функция про опасити
-            })
+            currentZero(); // использовал функцию которая пришивает ноль перед числом
+            dotsOpacity(); // опять та же функция про опасити
+        })
 
-
-        });
-
-    // showSlides(slideIndex);
-
-    // if (slides.length < 10) {
-    //     total.textContent = `0${slides.length}`;
-    // } else {
-    //     total.textContent = slides.length;
-    // }
-
-//     function showSlides(n) {
-//         if (n > slides.length) {
-//             slideIndex = 1;
-//         }
-
-//         if (n < 1) {
-//             slideIndex = slides.length;
-//         }
-
-//         slides.forEach( item => item.style.display = 'none');
-//         slides[slideIndex - 1].style.display = 'block';
-
-//         if (slides.length < 10) {
-//             current.textContent = `0${slideIndex}`;
-//         } else {
-//             current.textContent = slideIndex;
-//         }
-//     }
-
-//     function plusSlides(n) {
-//         showSlides(slideIndex += n);
-//     }
+    });
 
 
-//     prev.addEventListener('click', () => {
-//         plusSlides(-1);
-   
-//     });
-
-//     next.addEventListener('click', () => {
-//         plusSlides(1);
-        
-//     });
 
     
     

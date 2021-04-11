@@ -393,13 +393,13 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         slidesField.style.transform = `translateX(-${offset}px)`; // тут всему филду присваивается класс стиля трансформ 
 
-        if (slideIndex == slides.length) {
-            slideIndex = 1;
+        if (slideIndex == slides.length) { // если мы находимся в конце слайдера, то
+            slideIndex = 1; // если нажмём кнопку "вперёд" мы переместимся в начало слайдера
         } else {
-            slideIndex++;
+            slideIndex++; // но если мы не находимся в конце слайдера мы просто переместимся на один слайд вперёд
         }
-        currentZero();
-        dotsOpacity();
+        currentZero(); // эти две функции я прописал в самом начале этого блока. эта функция пришивает или не пришивает нуль перед числом, которое показывает наше текущее местоположение
+        dotsOpacity(); // а эта функция прописывает опасити точкам (видимость), она присваивает 50% опасити всем точкам и 100% опасити точке на которой мы сейчас находимся
     })
 
     prev.addEventListener('click', () => {  //КНОПКА НАЗАД
@@ -415,8 +415,8 @@ window.addEventListener('DOMContentLoaded', () => {
         } else {
             slideIndex--; // ну а если мы не на первом слайде то мы от числа слайдИндекс отнимаем 1
         }
-        currentZero();
-        dotsOpacity();
+        currentZero(); // просто функция которая пришивает нуль перед числом, я уже её описывал выше
+        dotsOpacity(); // просто функция, которая задаёт опасити точкам и точке на которой мы сейчас находимся, описывал её выше
     })
 
         indicators.forEach(dot => { // каждой точке в массиве
@@ -426,8 +426,8 @@ window.addEventListener('DOMContentLoaded', () => {
                 offset = +width.slice(0, width.length - 2) * (slideTo - 1) // выставляем положение слайдера в то место куда надо 
                 slidesField.style.transform = `translateX(-${offset}px)`; // плавно пересещаем слайдер при помощи стиля трансформ
 
-                currentZero();
-                dotsOpacity();
+                currentZero(); // использовал функцию которая пришивает ноль перед числом
+                dotsOpacity(); // опять та же функция про опасити
             })
 
 

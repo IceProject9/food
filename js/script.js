@@ -465,7 +465,7 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    initLocalSettings('#gender div', 'calculating__choose-item_active');
+    initLocalSettings('#gender div', 'calculating__choose-item_active'); // просто вызываем функцию с локал сторожем для статики и для динамики
     initLocalSettings('.calculating__choose_big div', 'calculating__choose-item_active');
 
     function calcTotal() { // создаём функцию для вычисления ккал

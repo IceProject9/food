@@ -1,7 +1,7 @@
-function tabs() { // когда нибудь я напишу что происходит в этом модуле Kappa
-    const tabs = document.querySelectorAll('.tabheader__item'),
-            tabsContent = document.querySelectorAll('.tabcontent'),
-            tabsParent = document.querySelector('.tabheader__items');
+function tabs(tabsSelector, tabsContentSelector, tabsParentSelector, activeClass) { // когда нибудь я напишу что происходит в этом модуле Kappa
+    const tabs = document.querySelectorAll(tabsSelector),
+            tabsContent = document.querySelectorAll(tabsContentSelector),
+            tabsParent = document.querySelector(tabsParentSelector);
 
     function hideTabContent() {
         tabsContent.forEach(kusok => {
@@ -10,14 +10,14 @@ function tabs() { // когда нибудь я напишу что происх
 
         });
         tabs.forEach(kusok => {
-            kusok.classList.remove('tabheader__item_active');
+            kusok.classList.remove();
         });
     }
 
     function showTabContent(i = 0) {
         tabsContent[i].classList.add('show', 'fade');
         tabsContent[i].classList.remove('hide');
-        tabs[i].classList.add('tabheader__item_active');
+        tabs[i].classList.add(activeClass);
     }
 
     hideTabContent();
@@ -26,7 +26,7 @@ function tabs() { // когда нибудь я напишу что происх
     tabsParent.addEventListener('click', (event) => {
     const target = event.target;
 
-    if (target && target.classList.contains('tabheader__item')) {
+    if (target && target.classList.contains(tabsSelector.slice(1))) {
         tabs.forEach((kusok, i) => {
             if (target == kusok) {
                 hideTabContent();
@@ -38,4 +38,5 @@ function tabs() { // когда нибудь я напишу что происх
     });
 }
 
-module.exports = tabs;
+
+export default tabs;

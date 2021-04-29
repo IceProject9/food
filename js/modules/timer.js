@@ -1,19 +1,20 @@
-function timer() {
-    const deadline = '2021-04-28';
+function timer(id, deadline) {
+
 
     function getTimeRemaining(endtime) {
         const t = Date.parse(endtime) - Date.parse(new Date()),
-              days = Math.floor(t / (1000 * 60 * 60 * 24)),
-              hours = Math.floor((t / (1000 * 60 * 60) % 24)),
-              minutes = Math.floor((t / (1000 / 60) % 60),
-              seconds = Math.floor((t / 1000) % 60));
+              days = Math.floor( (t / (1000 * 60 * 60 * 24)) ),
+              seconds = Math.floor((t / 1000) % 60),
+              minutes = Math.floor((t / 1000 / 60) % 60),
+              hours = Math.floor((t / (1000 * 60 * 60) % 24));
+              
 
         return {
             'total': t,
             'days' : days,
             'hours' : hours,
             'minutes' : minutes,
-            'seconds' : seconds
+            'seconds' : seconds,
         };         
     }
 
@@ -30,7 +31,7 @@ function timer() {
               days = timer.querySelector('#days'),
               hours = timer.querySelector('#hours'),
               minutes = timer.querySelector('#minutes'),
-              seconds = timer.querySelector('#seconds');
+              seconds = timer.querySelector('#seconds'),
               timeInterval = setInterval(updateClock, 1000);
 
         updateClock();
@@ -50,7 +51,8 @@ function timer() {
         }
     }
 
-    setClock('.timer', deadline);
+    setClock(id, deadline);
 }
 
-module.exports = timer;
+
+export default timer;

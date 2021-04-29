@@ -1,12 +1,12 @@
-function slider() {
-    const slides = document.querySelectorAll('.offer__slide'), // в переменную запихиваем все 4 слайда
-             slider = document.querySelector('.offer__slider'), // тут мы запихнули слайдер
-             next = document.querySelector('.offer__slider-next'), // кнопка "следующий слайд"
-             prev = document.querySelector('.offer__slider-prev'), // кнопка "предыдущий слайд"
-             total = document.querySelector('#total'), // число которое показывает сколько всего слайдов (их 4 пока что)
-             current = document.querySelector('#current'), // число которое показывает на каком мы сейчас слайде находимся
-             slidesWrapper = document.querySelector('.offer__slider-wrapper'), // это враппер, на нём находятся все слайды, которые сшиты один за другим
-             slidesField = document.querySelector('.offer__slider-inner'), // это окно через которое показываются слайды, одновременно показывается только один слайд
+function slider({container, slide, nextArrow, prevArrow, totalCounter, currentCounter, wrapper, field}) {
+    const slides = document.querySelectorAll(slide), // в переменную запихиваем все 4 слайда
+             slider = document.querySelector(container), // тут мы запихнули слайдер
+             next = document.querySelector(nextArrow), // кнопка "следующий слайд"
+             prev = document.querySelector(prevArrow), // кнопка "предыдущий слайд"
+             total = document.querySelector(totalCounter), // число которое показывает сколько всего слайдов (их 4 пока что)
+             current = document.querySelector(currentCounter), // число которое показывает на каком мы сейчас слайде находимся
+             slidesWrapper = document.querySelector(wrapper), // это враппер, на нём находятся все слайды, которые сшиты один за другим
+             slidesField = document.querySelector(field), // это окно через которое показываются слайды, одновременно показывается только один слайд
              width = window.getComputedStyle(slidesWrapper).width; // ширина ВСЕХ слайдов, добытая при помощи getComputedStyle (данное св-во предоставляет доступ ко всем стилям на объекте враппер и свойство width добывает свойство ширины)
 
     let slideIndex = 1; // пусть номер первого слайда всегда будет равен 1 
@@ -143,4 +143,5 @@ function slider() {
         });
 }
 
-module.exports = slider;
+
+export default slider;

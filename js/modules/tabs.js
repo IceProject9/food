@@ -10,7 +10,7 @@ function tabs(tabsSelector, tabsContentSelector, tabsParentSelector, activeClass
 
         });
         tabs.forEach(kusok => {
-            kusok.classList.remove();
+            kusok.classList.remove(activeClass);
         });
     }
 
@@ -23,7 +23,7 @@ function tabs(tabsSelector, tabsContentSelector, tabsParentSelector, activeClass
     hideTabContent();
     showTabContent();
 
-    tabsParent.addEventListener('click', (event) => {
+    tabsParent.addEventListener('click', function(event) {
     const target = event.target;
 
     if (target && target.classList.contains(tabsSelector.slice(1))) {
